@@ -3,7 +3,7 @@ body {
   font: 1.4em "Fira Sans", "open-sans", sans-serif;
 }
 
-h1 { margin: 5% auto; width:80%;}
+h1 { margin: 5% auto; width:80%; font-weight: normal;}
 
 a {
   color: #00B7FF;
