@@ -1,9 +1,10 @@
 body {
   height:90%;
-  font: 1.4em "Fira Sans", "open-sans", sans-serif;
+  font: 1.4em "fira-sans", "open-sans", sans-serif;
 }
 
-h1 { margin: 5% auto; width:80%; font-weight: normal;}
+h1 { width:100%; margin: 5% auto; font-weight: normal;
+	text-align:center;}
 
 a {
   color: #00B7FF;
