@@ -84,6 +84,18 @@ h1 {
 	transition: height 500ms, font-size 250ms, opacity 500ms;
 }
 
+h1.title {
+	display:inline-block;
+	padding-right:.2em;
+}
+
+h1.icon {
+	display:inline-block;
+	padding-left: .2em;
+	padding-right: .2em;
+	font-size:1.1em;
+}
+
 .body {
 	margin-top:5%;
 }
