@@ -7,7 +7,10 @@ router.get('/', function(req, res) {
 	  title: '00000000-0000-0000-0000-000000000000',
 	  guidempty: '00000000-0000-0000-0000-000000000000',
 	  partials: {
-		  list: 'list'
+		  intro: 'intro',
+		  list: 'list',
+		  import: 'import',
+		  lunch: 'lunch'
 	  }
   });
 });
