@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>guidempty.com@(string.IsNullOrWhiteSpace(ViewBag.Title) ? "" : string.Format(" - {0}", @ViewBag.Title))</title>
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="heading" id="home">
+        <div class="row">
+			<div class="hidden-sm hidden-xs col-md-8">
+				<a href="#"><h1>guidempty.com</h1></a>
+			</div>
+            <div class="col-md-4 col-sm-12">
+                <input type="text" id="inptHeading" value="@Guid.Empty.ToString()" />
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
