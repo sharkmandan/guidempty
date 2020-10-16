@@ -13,8 +13,9 @@
 	  <div class="row">
 		  <div class="hidden-sm hidden-xs col-md-8">
 			  <a href="#"><h1 class="title">guidempty.com</h1></a>
-			  <a href="#list"><h1 class="icon"><i class="glyphicon glyphicon-th-list"></i></h1></a>
+			  <a href="#section-sql"><h1 class="icon"><i class="glyphicon glyphicon-fire"></i></h1></a>
 			  <a href="#import"><h1 class="icon"><i class="glyphicon glyphicon-th"></i></h1></a>
+			  <a href="#list"><h1 class="icon"><i class="glyphicon glyphicon-th-list"></i></h1></a>
 			  <a href="#lunch"><h1 class="icon"><i class="glyphicon glyphicon-cutlery"></i></h1></a>
 		  </div>
 		  <div class="col-md-4 col-sm-12">
@@ -32,15 +33,40 @@
 						There are some empty guid/Guid.Empty related tools for copying and putting into SQL.
 						There are also several other masterpieces of modern engineering, including:
 					<ul>
-						<li><a href="#list">Querifying a List</a></li>
+						<li><a href="#section-sql">SQL Currently Running Queries</a></li>
 						<li><a href="#import">Querifying an Import</a></li>
+						<li><a href="#list">Querifying a List</a></li>
 						<li><a href="#lunch">Ghetto Spoon</a>, a food-decision <em>engine</em></li>
 					</ul>
+					</p>
+					<h2 id="section-sql"><i class="glyphicon glyphicon-fire"></i> SQL Currently Running Queries</h2>
+					<p>
+						Receive the currently active running queries, include the database name, SQL content, login, and host.<br />
+						<textarea id="sql-running" class="form-control" rows="16">
+SELECT
+	db_name(database_id) as db, 
+	sqltext.TEXT sql_text,
+	sp.loginame,
+	sp.hostname,
+	req.session_id,
+	req.status,
+	req.command,
+	req.cpu_time,
+	req.total_elapsed_time
+FROM sys.dm_exec_requests req
+CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS sqltext
+outer apply (
+	select top 1 * from sysprocesses
+	where spid = req.session_id
+) sp -- Link to find the user
+where req.session_id != @@spid -- Exclude this query that we are running
+order by db, loginame, hostname
+						</textarea>
 					</p>
 				</div>
 				<div class="col-md-4">
 					<h3>SQL</h3>
-					<input type="text" class="form-control" value="cast(cast(0 as binary) as uniqueidentifier)" />
+					<input type="text" class="form-control" value="cast(0x0 as uniqueidentifier)" />
 				</div>
 			</div>
 		</section>
